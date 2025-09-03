@@ -45,8 +45,11 @@ dmypy.json
 *.tmp
 *.temp
 
-# External dependencies
-/externals/
+# Ignore everything inside externals/ by default
+/externals/*
+
+# But allow submodules (these appear as files, not dirs)
+!/externals/*/
 
 # IDE
 .vscode/
