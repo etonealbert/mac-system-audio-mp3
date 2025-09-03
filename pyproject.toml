@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sli-recorder"
+version = "0.1.0"
+description = "Minimal typed Python CLI tool for recording macOS system audio to MP3"
+requires-python = ">=3.10"
+authors = [
+    {name = "SLI Recorder"}
+]
+dependencies = [
+    "typer>=0.12.0",
+    "typing-extensions>=4.9.0",
+]
+
+[project.scripts]
+sli-recorder = "sli_recorder.cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.5.0",
+    "ruff>=0.1.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sli_recorder*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+select = ["E", "W", "F", "I", "N", "UP", "YTT", "S", "BLE", "FBT", "B", "A", "COM", "C4", "DTZ", "T10", "EM", "EXE", "FA", "ISC", "ICN", "G", "INP", "PIE", "T20", "PYI", "PT", "Q", "RSE", "RET", "SLF", "SLOT", "SIM", "TID", "TCH", "INT", "ARG", "PTH", "TD", "FIX", "ERA", "PD", "PGH", "PL", "TRY", "FLY", "NPY", "AIR", "PERF", "FURB", "LOG", "RUF"]
+ignore = ["S603", "S607"]  # Allow subprocess calls
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_optional = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+warn_redundant_casts = true
+warn_unused_configs = true
